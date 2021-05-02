@@ -49,6 +49,7 @@ BBLAYERS ?= \
 	$(CURDIR)/meta-openembedded/meta-webserver \
 	$(CURDIR)/meta-oe-alliance/meta-oe \
 	$(CURDIR)/$(METAQT) \
+	$(CURDIR)/meta-oe-alliance/meta-brands/meta-abcom \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-airdigital \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-amiko \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-ax \
@@ -708,6 +709,12 @@ MACHINEBUILD=zgemmah102h
 else ifeq ($(MACHINEBUILD),zgemmah102s)
 MACHINE=h10
 MACHINEBUILD=zgemmah102s
+else ifeq ($(MACHINEBUILD),zgemmah11s)
+MACHINE=h11
+MACHINEBUILD=zgemmah11s
+else ifeq ($(MACHINEBUILD),zgemmah112h)
+MACHINE=h11
+MACHINEBUILD=zgemmah112h
 else ifeq ($(MACHINEBUILD),zgemmahzeros)
 MACHINE=hzero
 MACHINEBUILD=zgemmahzeros
@@ -966,6 +973,9 @@ MACHINEBUILD=dinobot4kelite
 else ifeq ($(MACHINEBUILD),viper4kv20)
 MACHINE=u57
 MACHINEBUILD=viper4kv20
+else ifeq ($(MACHINEBUILD),viper4kv30)
+MACHINE=u57
+MACHINEBUILD=viper4kv30
 else ifeq ($(MACHINEBUILD),protek4kx2)
 MACHINE=u57
 MACHINEBUILD=protek4kx2
@@ -978,6 +988,9 @@ MACHINEBUILD=dinobot4ktwin
 else ifeq ($(MACHINEBUILD),hitube4kpro)
 MACHINE=u57
 MACHINEBUILD=hitube4kpro
+else ifeq ($(MACHINEBUILD),hitube4kplus)
+MACHINE=u57
+MACHINEBUILD=hitube4kplus
 
 else ifeq ($(MACHINEBUILD),dinoboth265)
 MACHINE=u41
@@ -1006,6 +1019,9 @@ MACHINEBUILD=vipersingle
 else ifeq ($(MACHINEBUILD),turing)
 MACHINE=u43
 MACHINEBUILD=turing
+else ifeq ($(MACHINEBUILD),axashistwinplus)
+MACHINE=u45
+MACHINEBUILD=axashistwinplus
 
 
 else ifeq ($(MACHINEBUILD),clap4k)
@@ -1027,10 +1043,21 @@ MACHINEBUILD=axmulticombo
 else ifeq ($(MACHINEBUILD),axmultitwin)
 MACHINE=multibox
 MACHINEBUILD=axmultitwin
+else ifeq ($(MACHINEBUILD),novaler4k)
+MACHINE=multibox
+MACHINEBUILD=novaler4k
 
 else ifeq ($(MACHINEBUILD),maxytecmultise)
 MACHINE=multiboxse
 MACHINEBUILD=maxytecmultise
+
+else ifeq ($(MACHINEBUILD),abpulse4k)
+MACHINE=pulse4k
+MACHINEBUILD=abpulse4k
+else ifeq ($(MACHINEBUILD),abpulse4kmini)
+MACHINE=pulse4k
+MACHINEBUILD=abpulse4kmini
+
 
 endif
 
@@ -1140,6 +1167,8 @@ $(CURDIR)/site.conf:
 	@echo 'BUILD_OPTIMIZATION = "-O2 -pipe"' >> $@
 	@echo 'DL_DIR = "$(DL_DIR)"' >> $@
 	@echo 'INHERIT += "rm_work"' >> $@
+	@echo 'BB_GIT_SHALLOW_DEPTH = "1"' >> $@
+	@echo 'BB_GIT_SHALLOW = "1"' >> $@
 
 BBLAYERS_CONF_HASH := $(call hash, \
 	'BBLAYERS_CONF_VERSION = "5"' \
