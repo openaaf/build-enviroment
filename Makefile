@@ -103,6 +103,11 @@ all: init
 	@echo "	or"
 	@echo "cd $(BUILD_DIR) ; source env.source ; bitbake $(DISTRO)-image"
 	@echo
+	@echo "To download all sources for image build:"
+	@echo "MACHINE=mutant2400 DISTRO=openatv DISTRO_TYPE=release make download"
+	@echo " or"
+	@echo "cd $(BUILD_DIR) ; source env.source ; bitbake $(DISTRO)-image --runall=fetch"
+	@echo
 	@echo "To build image without feed:"
 	@echo "MACHINE=mutant2400 DISTRO=openatv DISTRO_TYPE=release make enigma2-image"
 	@echo " or"
@@ -1077,6 +1082,10 @@ feeds: init
 clean:
 	@. $(TOPDIR)/env.source && cd $(TOPDIR) && echo -n -e "Performing a clean \e[95mPlease wait... " && bitbake -qqq -c clean $(DISTRO)-image && echo -n -e "\e[93mClean completed.\e[0m"
 
+download: init
+	@echo 'Downloading sources'
+	@. $(TOPDIR)/env.source && cd $(TOPDIR) && bitbake $(DISTRO)-image --runall=fetch
+
 update:
 	@echo 'Updating Git repositories...'
 	@HASH=`$(XSUM) $(MAKEFILE_LIST)`; \
@@ -1141,7 +1150,6 @@ $(TOPDIR)/conf/$(DISTRO).conf: $(DEPDIR)/.$(DISTRO).conf.$($(DISTRO)_CONF_HASH)
 	@echo 'Generating $@'
 	@test -d $(@D) || mkdir -p $(@D)
 	@echo 'DISTRO_TYPE = "$(DISTRO_TYPE)"' >> $@
-	@echo 'SSTATE_DIR = "$(SSTATE_DIR)"' >> $@
 	@echo 'TMPDIR = "$(TMPDIR)"' >> $@
 	@echo 'BB_GENERATE_MIRROR_TARBALLS = "1"' >> $@
 	@echo 'BBINCLUDELOGS = "yes"' >> $@
@@ -1172,6 +1180,7 @@ $(CURDIR)/site.conf:
 	@echo 'PARALLEL_MAKE = "$(PARALLEL_MAKE)"' >> $@
 	@echo 'BUILD_OPTIMIZATION = "-O2 -pipe"' >> $@
 	@echo 'DL_DIR = "$(DL_DIR)"' >> $@
+	@echo 'SSTATE_DIR = "$(SSTATE_DIR)"' >> $@
 	@echo 'INHERIT += "rm_work"' >> $@
 	@echo 'BB_GIT_SHALLOW_DEPTH = "1"' >> $@
 	@echo 'BB_GIT_SHALLOW = "1"' >> $@
