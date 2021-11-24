@@ -16,7 +16,7 @@
 	ignore = dirty
 [submodule "meta-oe-alliance"]
 	path = meta-oe-alliance
-	url = https://github.com/oe-alliance/oe-alliance-core.git
+	url = https://github.com/openaaf/oe-alliance-core.git
 [submodule "meta-qt5"]
 	path = meta-qt5
 	url = https://github.com/oe-mirrors/meta-qt5
