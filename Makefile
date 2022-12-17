@@ -41,6 +41,7 @@ BBLAYERS ?= \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-abcom \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-airdigital \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-amiko \
+	$(CURDIR)/meta-oe-alliance/meta-brands/meta-anadol \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-ax \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-blackbox \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-beyonwiz \
@@ -339,9 +340,12 @@ MACHINEBUILD=beyonwizt3
 else ifeq ($(MACHINEBUILD),sezam1000hd)
 MACHINE=inihde
 MACHINEBUILD=sezam1000hd
-else ifeq ($(MACHINEBUILD),xpeedlx)
+else ifeq ($(MACHINEBUILD),xpeedlx1)
 MACHINE=inihde
-MACHINEBUILD=xpeedlx
+MACHINEBUILD=xpeedlx1
+else ifeq ($(MACHINEBUILD),xpeedlx2)
+MACHINE=inihde
+MACHINEBUILD=xpeedlx2
 else ifeq ($(MACHINEBUILD),mbmini)
 MACHINE=inihde
 MACHINEBUILD=mbmini
@@ -890,6 +894,9 @@ MACHINEBUILD=gbx34k
 else ifeq ($(MACHINEBUILD),gbtrio4k)
 MACHINE=gbmv200
 MACHINEBUILD=gbtrio4k
+else ifeq ($(MACHINEBUILD),gbtrio4kplus)
+MACHINE=gbmv200
+MACHINEBUILD=gbtrio4kplus
 else ifeq ($(MACHINEBUILD),gbip4k)
 MACHINE=gbmv200
 MACHINEBUILD=gbip4k
@@ -1006,6 +1013,12 @@ MACHINEBUILD=viper4kv40
 else ifeq ($(MACHINEBUILD),iziboxone4kplus)
 MACHINE=u571
 MACHINEBUILD=iziboxone4kplus
+else ifeq ($(MACHINEBUILD),axas4kcombo)
+MACHINE=u571
+MACHINEBUILD=axas4kcombo
+else ifeq ($(MACHINEBUILD),axas4ktwin)
+MACHINE=u571
+MACHINEBUILD=axas4ktwin
 
 else ifeq ($(MACHINEBUILD),dinoboth265)
 MACHINE=u41
@@ -1074,6 +1087,9 @@ MACHINEBUILD=axmultiboxse
 else ifeq ($(MACHINEBUILD),novaler4kse)
 MACHINE=multiboxse
 MACHINEBUILD=novaler4kse
+else ifeq ($(MACHINEBUILD),novaler4kpro)
+MACHINE=multiboxpro
+MACHINEBUILD=novaler4kpro
 
 endif
 
@@ -1129,7 +1145,7 @@ BITBAKE_ENV_HASH := $(call hash, \
 
 $(TOPDIR)/env.source: $(DEPDIR)/.env.source.$(BITBAKE_ENV_HASH)
 	@echo 'Generating $@'
-	@echo 'export BB_ENV_EXTRAWHITE="MACHINE DISTRO MACHINEBUILD BB_SRCREV_POLICY BB_NO_NETWORK"' > $@
+	@echo 'export BB_ENV_PASSTHROUGH_ADDITIONS="MACHINE DISTRO MACHINEBUILD BB_SRCREV_POLICY BB_NO_NETWORK"' > $@
 	@echo 'export MACHINE=$(MACHINE)' >> $@
 	@echo 'export DISTRO=$(DISTRO)' >> $@
 	@echo 'export MACHINEBUILD=$(MACHINEBUILD)' >> $@
