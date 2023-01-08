@@ -63,7 +63,7 @@ BBLAYERS ?= \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-odin \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-octagon \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-protek \
-    $(CURDIR)/meta-oe-alliance/meta-brands/meta-qviart \
+	$(CURDIR)/meta-oe-alliance/meta-brands/meta-qviart \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-skylake \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-tiviar \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-tripledot \
@@ -894,9 +894,9 @@ MACHINEBUILD=gbx34k
 else ifeq ($(MACHINEBUILD),gbtrio4k)
 MACHINE=gbmv200
 MACHINEBUILD=gbtrio4k
-else ifeq ($(MACHINEBUILD),gbtrio4kplus)
+else ifeq ($(MACHINEBUILD),gbtrio4kpro)
 MACHINE=gbmv200
-MACHINEBUILD=gbtrio4kplus
+MACHINEBUILD=gbtrio4kpro
 else ifeq ($(MACHINEBUILD),gbip4k)
 MACHINE=gbmv200
 MACHINEBUILD=gbip4k
