@@ -37,6 +37,7 @@ BBLAYERS ?= \
 	$(CURDIR)/meta-openembedded/meta-filesystems \
 	$(CURDIR)/meta-openembedded/meta-python \
 	$(CURDIR)/meta-openembedded/meta-webserver \
+	$(CURDIR)/meta-python2 \
 	$(CURDIR)/$(METAQT) \
 	$(CURDIR)/meta-clang \
 	$(CURDIR)/meta-oe-alliance/meta-brands/meta-abcom \
@@ -912,6 +913,9 @@ MACHINEBUILD=axashisc4k
 else ifeq ($(MACHINEBUILD),dinobot4kelite)
 MACHINE=u56
 MACHINEBUILD=dinobot4kelite
+else ifeq ($(MACHINEBUILD),iziboxx4)
+MACHINE=u57
+MACHINEBUILD=iziboxx4
 else ifeq ($(MACHINEBUILD),viper4kv20)
 MACHINE=u57
 MACHINEBUILD=viper4kv20
